@@ -50,11 +50,13 @@ def option2_1():
 
 def option2_2_1():
     pb['value'] += 33.5
+    window.geometry('310x120')
     option_button1.configure(text='De kaas heeft een korst', command=option2_3_1)
     option_button2.configure(text='De kaas heeft geen korst', command=option2_3_2)
 
 def option2_2_2():
     pb['value'] += 33
+    window.geometry('310x120')
     option_button1.configure(text='De kaas heeft een korst', command=option2_3_3)
     option_button2.configure(text='De kaas heeft geen korst', command=option2_3_4)
 
