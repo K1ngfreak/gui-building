@@ -1,3 +1,25 @@
+import tkinter as tk
+from tkinter.messagebox import showinfo
+
+window = tk.Tk()
+window.title('Kaas')
+
+kaas = ('Emmenthalen', 'Leerdammer', 'Pammigiano Reggiano', 'Goudse kaas', 'Blue de Rochbaron', 'Foume d_Ambert', 'Camembert', 'Mozzarella')
+
+
+
+
+
+
+
+
+window.mainloop()
+
+
+
+
+
+
 kaas = str(input('Is de kaas geel? '))
 if kaas == 'ja':
     gaten = str(input('Zitter er gaten in? '))
