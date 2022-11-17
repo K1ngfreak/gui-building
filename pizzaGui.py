@@ -2,45 +2,53 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo
 
+
 root = tk.Tk()
-root.geometry('300x200')
+root.geometry("300x200")
 root.resizable(False, False)
 root.title('Pizza')
 
-smallPizza = tk.StringVar()
-mediumPizza = tk.StringVar()
-largePizza = tk.StringVar()
+# pizza's
+smallPizza = tk.IntVar()
+mediumPizza = tk.IntVar()
+largePizza = tk.IntVar()
 
+# eindscherm
+def ordered():
+    payment = 6.99 * smallPizza.get() + 11.99 * mediumPizza.get() + 17.99 * largePizza.get()
+    msg = f'That will be: €{round(payment, 2)}'
+    showinfo(
+        title='Information',
+        message=msg
+    )
 
-def small_pizza():
-    tk.messagebox.showinfo(title='Amount',
-                        message=smallPizza.get())
+orders = ttk.Frame(root)
+orders.pack(padx=10, pady=10, fill='x', expand=True)
 
-def medium_pizza():
-    tk.messagebox.showinfo(title='Amount',
-                        message=mediumPizza.get())
+# size small
+small_label = ttk.Label(orders, text='Small - 20cm - €6.99:')
+small_label.pack(fill='x', expand=True)
 
-def large_pizza():
-    tk.messagebox.showinfo(title='Amount',
-                        message=largePizza.get())
+small_entry = ttk.Entry(orders, textvariable=smallPizza)
+small_entry.pack(fill='x', expand=True)
 
+# size medium
+medium_label = ttk.Label(orders, text='Medium:  20 - 30cm - €11.99:')
+medium_label.pack(fill='x', expand=True)
 
-ttk.Checkbutton(root,
-                text='Small:        20cm - €6.99',
-                command=small_pizza,
-                variable=smallPizza,
-                offvalue=0).pack()
+medium_entry = ttk.Entry(orders, textvariable=mediumPizza)
+medium_entry.pack(fill='x', expand=True)
 
-ttk.Checkbutton(root,
-                text='Medium:  30cm - €11.99',
-                command=medium_pizza,
-                variable=mediumPizza,
-                offvalue=0).pack()
+# size large
+large_label = ttk.Label(orders, text='Large:   30 - 40cm - €17.99:')
+large_label.pack(fill='x', expand=True)
 
-ttk.Checkbutton(root,
-                text='Large:       40cm - €17.99',
-                command=large_pizza,
-                variable=largePizza,
-                offvalue=0).pack()
+large_entry = ttk.Entry(orders, textvariable=largePizza)
+large_entry.pack(fill='x', expand=True)
+
+# ordering
+order_button = ttk.Button(orders, text='order', command=ordered)
+order_button.pack(fill='x', expand=True, pady=10)
+
 
 root.mainloop()
