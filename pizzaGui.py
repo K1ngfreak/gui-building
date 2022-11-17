@@ -2,36 +2,45 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo
 
-window = tk.Tk()
-window.title('Pizza')
+root = tk.Tk()
+root.geometry('300x200')
+root.resizable(False, False)
+root.title('Pizza')
 
-pizzaSize = ('Small: 20cm - €6.99', 'Medium: 30cm - €11.99', 'Large: 40cm - €17.99')
-
-var = tk.Variable(value=pizzaSize)
-
-listbox = tk.Listbox(
-    window,
-    listvariable=var,
-    height=3,
-    selectmode=tk.EXTENDED
-)
-
-listbox.pack(expand=True, fill=tk.BOTH)
+smallPizza = tk.StringVar()
+mediumPizza = tk.StringVar()
+largePizza = tk.StringVar()
 
 
-window.mainloop()
+def small_pizza():
+    tk.messagebox.showinfo(title='Amount',
+                        message=smallPizza.get())
+
+def medium_pizza():
+    tk.messagebox.showinfo(title='Amount',
+                        message=mediumPizza.get())
+
+def large_pizza():
+    tk.messagebox.showinfo(title='Amount',
+                        message=largePizza.get())
 
 
+ttk.Checkbutton(root,
+                text='Small:        20cm - €6.99',
+                command=small_pizza,
+                variable=smallPizza,
+                offvalue=0).pack()
 
+ttk.Checkbutton(root,
+                text='Medium:  30cm - €11.99',
+                command=medium_pizza,
+                variable=mediumPizza,
+                offvalue=0).pack()
 
-aantal_small = int(input('Aantal small: '))
-aantal_medium = int(input('Aantal medium: '))
-aantal_large = int(input('Aantal large: '))
+ttk.Checkbutton(root,
+                text='Large:       40cm - €17.99',
+                command=large_pizza,
+                variable=largePizza,
+                offvalue=0).pack()
 
-ticket_small = float(price_small * aantal_small)
-ticket_medium = float(price_medium * aantal_medium)
-ticket_large = float(price_large * aantal_large)
-
-receipt = float(ticket_small + ticket_medium + ticket_large)
-
-print(str(receipt) + ' euro')
+root.mainloop()
