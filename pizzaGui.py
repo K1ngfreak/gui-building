@@ -3,20 +3,26 @@ from tkinter import ttk
 from tkinter.messagebox import showinfo
 
 window = tk.Tk()
-window.geometry('500x400')
 window.title('Pizza')
+
+pizzaSize = ('Small: 20cm - €6.99', 'Medium: 30cm - €11.99', 'Large: 40cm - €17.99')
+
+var = tk.Variable(value=pizzaSize)
+
+listbox = tk.Listbox(
+    window,
+    listvariable=var,
+    height=3,
+    selectmode=tk.EXTENDED
+)
+
+listbox.pack(expand=True, fill=tk.BOTH)
+
 
 window.mainloop()
 
 
-print('Size:')
-print('Small:   10 - 20cm - 6.99')
-print('Medium:  20 - 30cm - 11.99')
-print('Large:   30 - 40cm - 17.99')
 
-price_small = 6.99
-price_medium = 11.99
-price_large = 17.99
 
 aantal_small = int(input('Aantal small: '))
 aantal_medium = int(input('Aantal medium: '))
