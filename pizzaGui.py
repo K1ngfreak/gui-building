@@ -1,3 +1,13 @@
+import tkinter as tk
+from tkinter import ttk
+from tkinter.messagebox import showinfo
+
+window = tk.Tk()
+window.geometry('500x400')
+window.title('Pizza')
+
+window.mainloop()
+
 
 print('Size:')
 print('Small:   10 - 20cm - 6.99')
