@@ -1,67 +1,38 @@
-import os
+import tkinter as tk
+from tkinter import ttk
+from tkinter.messagebox import showinfo
 import random
-import time
 
-def clear():
-    command = 'cls'
-    os.system(command)
+def continueDef():
+    messageLabel1.destroy()
+    messageLabel2.destroy()
+    continueBtn.destroy()
 
-score = 0
+def game():
+    global round
+    global guess
 
-print('Er is een random getal tussen de 1 en de 1000')
-time.sleep(2)
-print('Er zijn 20 rondes')
-time.sleep(1)
-print('Je krijgt 10 gokken')
-time.sleep(2)
-clear()
+window = tk.Tk()
+window.title('Raden')
+window.geometry('300x200')
 
-for ronde in range(1,21,1):
-    numberToGuess = int(random.randint(1,1000))
+# rules layed out
+messageLabel1 = ttk.Label(text='Er is een random getal tussen de 1 en de 1000')
+messageLabel1.pack()
 
-    for poging in range(1,11,1):
-        print('Ronde ' + str(ronde))
-        print('Poging ' + str(poging))
-        
-        userGuess = str(input('Raad het getal: '))
-        
-        if userGuess == 'quit':
-            print('Het programma word afgeloten')
-            time.sleep(1)
-            clear()
-            exit()
-        
-        number = numberToGuess - int(userGuess)
+messageLabel2 = ttk.Label(text='Er zijn 20 rondes en je krijgt 10 kansen per ronde')
+messageLabel2.pack()
 
-        if int(userGuess) == numberToGuess:
-            score = score + 1
-            print('Je hebt het getal geraden')
-            print('Score: ' + str(score))
-            time.sleep(2)
-            clear()
-            break
+continueBtn = ttk.Button(text='continue', command=continueDef)
+continueBtn.pack()
 
-        elif int(userGuess) < numberToGuess:
-            print('Het getal ligt hoger')
-            time.sleep(1.5)
-        
-        elif int(userGuess) > numberToGuess:
-            print('Het getal ligt lager')
-            time.sleep(1.5)
-            
-        if abs(number) < 51:
-            print('warm')
-            time.sleep(1.5)
-            clear()
+# background point and round counter
+points = 0
+round = 0
+guess = 0
 
-        else:
-            print('koud')
-            time.sleep(1.5)
-            clear()
-            
-        if poging == 10:
-            print('Het getal was: ' + str(numberToGuess))
 
-        
 
-print('Eindscore: ' + str(score))
+
+
+window.mainloop()
