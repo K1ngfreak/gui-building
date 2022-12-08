@@ -6,8 +6,6 @@ window = tk.Tk()
 window.title('Kaas')
 window.geometry('300x120')
 
-kaas = ('Emmenthalen', 'Leerdammer', 'Pammigiano Reggiano', 'Goudse kaas', 'Blue de Rochbaron', 'Foume d_Ambert', 'Camembert', 'Mozzarella')
-
 def option1_1():
     pb['value'] += 33.5
     window.geometry('350x120')
@@ -75,7 +73,6 @@ def option2_3_3():
 def option2_3_4():
     pb['value'] += 33
     showinfo(message='Je hebt: mozzarella')
-
 
 
 pb = ttk.Progressbar(
