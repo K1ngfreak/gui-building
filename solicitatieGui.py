@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter.messagebox import showinfo
 
 
 def next_question():
@@ -70,9 +71,10 @@ def next_question():
         if entryAnswerString.get() == 'nee' or entryAnswerString.get() == 'N' or entryAnswerString.get() == 'n' or entryAnswerString.get() == 'Nee':
             outcome = 'No'
         if outcome == 'Yes':
-            print
+            showinfo(message='U bent aangenomen!')
         elif outcome == 'No':
-            print  
+            showinfo(message='U bent helaas niet aangenomen')
+        window.quit()
     question += 1
     
 
